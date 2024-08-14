@@ -54,6 +54,39 @@ public class phonebookDao  {
         }
     }
     
+    //Save new person's information to the database
+    public int insertPerson(PersonVO personvo) {
+    	this.getConnection();
+    	
+    	System.out.println("Initiated DAO insertPerson method");
+    	
+    	try {
+    		//SQL 쿼리 준비 / 바인딩 / 실행
+    		
+    		//쿼리 준비
+    		String query = "";
+        	query += " insert into person ";
+        	query += "	value (null, ? , ? ,? ) ";
+        	
+        	
+        	//바인딩 
+    		pstmt = conn.prepareStatement(query);
+    		pstmt.setString(1, personvo.getName());
+    		pstmt.setString(2, personvo.getHp());
+    		pstmt.setString(3, personvo.getCompanyhp());
+    		
+    		//실행
+    		pstmt.executeUpdate();
+    		
+    		
+    	}catch (SQLException e) {
+    		System.out.println("Error : " + e);
+    	}
+    	
+		return 0;
+    	
+    }
+    
     public List<PersonVO> getPersonList() {
     	
     	List<PersonVO> personList = new ArrayList<PersonVO>();

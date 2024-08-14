@@ -16,6 +16,12 @@ public class PersonVO {
 		this.companyhp = companyhp;
 	}
 	
+	public PersonVO( String name, String hp, String companyhp) {
+		this.name = name;
+		this.hp = hp;
+		this.companyhp = companyhp;
+	}
+	
 	//Getter / Setter
 	public int getPersonID() {
 		return personID;

@@ -13,7 +13,7 @@
 
 	<h2>전화번호-등록폼</h2>
 
-	<p>아래의 항목을 입력한 후 등록버튼을 클릭해 주세요</p>
+	<p>아래의 항목을 입력한 후 수버튼을 클릭해 주세요</p>
 	
 	<form action="/phonebook/pbc" method="get">
 		<div>
@@ -30,9 +30,9 @@
 			<label for="txt-company">회사(company):</label> 
 			<input id="txt-company" type="text" name="company" value="" placeholder="회사">
 		</div>
-		숨김<input type="text" name="action" value="insert" hidden>
+		숨김<input type="text" name="action" value="editform" hidden>
 		<br>
-		<button type="submit">등록(전송)</button>
+		<button type="submit">수정(전송)</button>
 	</form>
 	
 	

@@ -34,7 +34,7 @@
         </tr>
     </table>
     <%} %>
-    <a href = "registration.jsp" id="listButton">전화번호 등록</a>
+    <a href = "#" id="listButton">전화번호 등록</a>
     
 </body>
 </html>
