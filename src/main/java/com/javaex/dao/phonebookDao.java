@@ -5,8 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class phonebookDao {
+import com.kavaex.vo.PersonVO;
+
+public class phonebookDao  {
 	
 	// 데이터베이스 연결 변수
     private Connection conn = null;
@@ -48,6 +52,52 @@ public class phonebookDao {
             System.out.println("  원인: " + e.getMessage());
 			System.out.println("─────────────────────────────────────────────────────");
         }
+    }
+    
+    public List<PersonVO> getPersonList() {
+    	
+    	List<PersonVO> personList = new ArrayList<PersonVO>();
+    	
+    	this.getConnection();
+    	
+    	
+    	try {
+    		//SQL 쿼리 준비 / 바인딩 / 실행
+    		
+    		//쿼리 준비
+    		String query = "";
+        	query += " select person_id, ";
+        	query += "	name, ";
+        	query += "	hp, ";
+        	query += " company ";
+        	query += " from person ";
+        	
+        	//바인딩 
+    		pstmt = conn.prepareStatement(query);
+    		
+    		//실행
+    		rs = pstmt.executeQuery();
+    		
+    		//결과처리
+    		while(rs.next()) {
+    			int personID = rs.getInt("person_id");
+    			String name = rs.getString("name");
+    			String hp = rs.getString("hp");
+    			String company = rs.getString("company");
+    			
+    			PersonVO person = new PersonVO(personID,name,hp,company);
+    			personList.add(person);
+    			
+    		}
+    		
+    	}catch (SQLException e) {
+    		System.out.println("Error : " + e);
+    	}
+    	
+    	
+    	this.close();
+		return personList;
+    	
     }
     
     
