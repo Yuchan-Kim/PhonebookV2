@@ -173,6 +173,56 @@ public class phonebookDao  {
     	
     }
     
+    public int deletePerson(int no) {
+    	System.out.println(no);
+    	
+    	
+    	int count = -1;
+    	this.getConnection();
+    	
+    	try {
+    		
+    		String query ="";
+    		query += " delete from person ";
+    		query += " where person_id = ? ";
+    		
+    		pstmt = conn.prepareStatement(query);
+    		pstmt.setInt(1,no);
+    		
+    		count = pstmt.executeUpdate();
+    		
+    		System.out.println(count + "건 삭제.");
+    		
+    	}catch (SQLException e) {
+    		System.out.println("error: " + e);
+    	}
+    	
+    	this.close();
+    	
+    	return 0;
+    }
+    
     
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

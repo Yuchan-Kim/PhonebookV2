@@ -32,9 +32,10 @@
             <td>회사(company)</td>
             <td><%=personList.get(i).getCompanyhp() %></td>
         </tr>
+        <br><br>
     </table>
     <%} %>
-    <a href = "#" id="listButton">전화번호 등록</a>
+    <a href = "http://localhost:8080/phonebook/pbc?action=registration" id="listButton">전화번호 등록</a>
     
 </body>
 </html>
