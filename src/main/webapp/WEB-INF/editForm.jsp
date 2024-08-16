@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ page import= "com.kavaex.vo.PersonVO" %>    
+    <%
+    	PersonVO personVo = (PersonVO) request.getAttribute("personVO");
+    %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -11,24 +14,24 @@
 <body>
 	<h1>전화번호부</h1>
 
-	<h2>전화번호-등록폼</h2>
+	<h2>전화번호-수정폼</h2>
 
 	<p>아래의 항목을 입력한 후 수버튼을 클릭해 주세요</p>
 	
 	<form action="/phonebook/pbc" method="get">
 		<div>
 			<label for="txt-name">이름(name):</label> 
-			<input id="txt-name" type="text" name="name" value="" placeholder="이름">
+			<input id="txt-name" type="text" name="name" value="<%=personVo.getName()%>" placeholder="이름">
 		</div>
 		
 		<div>
 			<label for="txt-hp">핸드폰(hp):</label> 
-			<input id="txt-hp" type="text" name="hp" value="" placeholder="핸드폰">
+			<input id="txt-hp" type="text" name="hp" value="<%=personVo.getHp()%>" placeholder="핸드폰">
 		</div>
 		
 		<div>
 			<label for="txt-company">회사(company):</label> 
-			<input id="txt-company" type="text" name="company" value="" placeholder="회사">
+			<input id="txt-company" type="text" name="company" value="<%=personVo.getCompanyhp()%>" placeholder="회사">
 		</div>
 		숨김<input type="text" name="action" value="editform" hidden>
 		<br>

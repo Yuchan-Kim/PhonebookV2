@@ -54,6 +54,46 @@ public class phonebookDao  {
         }
     }
     
+    //Bring person's information
+    public PersonVO getPerson(int no) {
+    	
+    	this.getConnection();
+    	PersonVO person = null;
+    	try {
+    		String query = "";
+        	query += " select person_id, ";
+        	query += "	name, hp, company from person where person_id = ? ";
+        	
+        	//바인딩 
+    		pstmt = conn.prepareStatement(query);
+    		pstmt.setInt(1, no);
+    		
+    		//실행
+    		rs = pstmt.executeQuery();
+    		
+    		//결과처리
+    		while(rs.next()) {
+    			int personID = rs.getInt("person_id");
+    			String name = rs.getString("name");
+    			String hp = rs.getString("hp");
+    			String company = rs.getString("company");
+    			
+    			person = new PersonVO(personID,name,hp,company);
+    			
+    			
+    		}
+        	
+        	
+    	}catch (SQLException e) {
+    		System.out.println("error: " + e);
+    	}
+    	
+    	
+    	
+		return person;
+    	
+    }
+    
     //Save new person's information to the database
     public int insertPerson(PersonVO personvo) {
     	this.getConnection();
